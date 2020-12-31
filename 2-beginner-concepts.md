@@ -4,7 +4,7 @@ Before we start coding, I want to take another lesson to look at the big picture
 
 Don't feel like you have to understand all of these perfectly. It's not possible because we are not coding anything in this video. Just get a general idea.
 
-# 1. Source Control
+## 1. Source Control
 
 Source control is a system to store your code, protect it, and preserve version changes.
 
@@ -16,7 +16,7 @@ Throughout these lessons we will talk about what code should and should not be c
 
 GitHub allows for free private repositories, so if you want to protect your code from disappearing when your computer explodes, but don't want to open your code for everyone to view, you can give that a try.
 
-# 2. Virtual Environments
+## 2. Virtual Environments
 
 Virtual environments are a setup step that we must perform that, at first, can be a little annoying and distracting from learning Python or web development.
 
@@ -44,7 +44,7 @@ python3 -m venv .venv
 
 The ```.venv``` folder does not need checked in to source control because we will preserve the package versions in a specific file called ```requirements.txt```.
 
-# 3. Requirements.txt
+## 3. Requirements.txt
 
 When we create our project, we can define the modules we depend on in a text file. We can then later download all of the dependencies at a later time and get the exact version numbers that we need.
 
@@ -64,7 +64,7 @@ Whenever you want to generate your dependencies from ```requirements.txt```, wit
 pip install -r requirements.txt
 ```
 
-# 4. Deployment
+## 4. Deployment
 
 This is a topic that deserves its own course (probably from someone more qualified than myself), but I can say that deployment is a very important step in a software project.
 
@@ -89,7 +89,7 @@ automatically trigger deployment > confirm changes on deployment server
 
 We're going to do the deployment fairly early instead of waiting till the end. That way we can reference it as we build up our application. If you have any hiccups deploying your application (I see it as the most likely thing to change in this course material) or don't need to deploy, you can follow this series on your local machine pretty much the same.
 
-# HTTP Methods
+## HTTP Methods
 
 A web server is going to not only allow requests to certain routes (```/api/users``` for example), but also different **methods**. A comprehensive list can be found [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods), but the main few you should first become comfortable with are ```GET``` and ```POST```.
 
