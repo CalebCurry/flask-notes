@@ -64,7 +64,7 @@ Whenever you want to generate your dependencies from ```requirements.txt```, wit
 pip install -r requirements.txt
 ```
 
-## 4. Deployment
+## 4. Deployments
 
 This is a topic that deserves its own course (probably from someone more qualified than myself), but I can say that deployment is a very important step in a software project.
 

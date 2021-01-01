@@ -1,13 +1,13 @@
 # Introduction to Flask and Python Web Development
 
 ## What is Flask?
-Flask is a framework to build web applications in Python. This is to build the back end of a website, so you will use flask to do data processing and handle requests, work with databases, send respondes, etc.
+Flask is a framework to build web applications in Python. This is to build the back end of a website, so you will use flask to do data processing and handle requests, work with databases, send responses, etc.
 
 To understand where Flask fits into the larger picture, you will still use front end technologies such as JavaScript, and you will still use database technologies like MySQL, MongoDB, or Postgres. And you will still need a web server, such as Nginx.
 
 Flask competes with other frameworks such as Django, and FastAPI.
 
-Now fortunately, if you’re new to backend application development, a lot of the concepts for Flask are going to be very similar to other frameworks for Django. I wouldn’t worry too much about which one to choose or start with. And if you’re watching this, then I’m assuming you’re pretty convinced Flask may be the way to go!
+Now fortunately, if you’re new to back end application development, a lot of the concepts for Flask are going to be very similar to other frameworks for Django. I wouldn’t worry too much about which one to choose or start with. And if you’re watching this, then I’m assuming you’re pretty convinced Flask may be the way to go!
 
 ## A Simple Architecture Example
 A simple application architecture that is going to be seen across most web frameworks is that you have a function, let’s say it’s called ```hello()```, that is going to handle certain web requests.
