@@ -61,13 +61,38 @@ There is a SQLAlchemy module specifically for Flask called [Flask-SQLAlchemy](ht
 
 ## Authorization
 
-As we build out our API, we may want restrict certain access to certain people. Maybe you want to build out an admin panel with more capabilities, or only allow registered users to use the API. This is all included in **authentication* and **authorization**. Authentication is confirming your identity, and authorization is confirming your permission levels.
+As we build out our API, we may want restrict certain access to certain people. Maybe you want to build out an admin panel with more capabilities, or only allow registered users to use the API. This is all included in **authentication** and **authorization**. Authentication is confirming your identity, and authorization is confirming your permission levels.
 
+For this step, we will be using **JSON web tokens** (JWTs). These are digitally signed JSON data packets called **tokens**.
+
+Two fantastic introductions to JWT are these articles from [JWT](https://jwt.io/introduction/) and [AuthO](https://auth0.com/blog/stateless-auth-for-stateful-minds).
+
+The workflow described from the JWT website is that the user will login using user credentials for authentication. Then, the user will send a JSON web token with each request to confirm they are authorized to work with a particular API endpoint. For authorization, you can use a service like AuthO, or use your own database for user information.
+
+With JSON web tokens, no session info is stored on the server. This means that the user is essentially "logged in" as long as they have their JWT. We don't keep track of this information on the server.
+
+We may not want users logged in for eternity. Think of a JWT as a keycard that carries with it various permissions. If a keycard was misplaced, we would want to mark it as invalid. We can do a few things:
+
+1. We could put an expiration on the JWT so that each JWT expires after a certain length of time. This is the easiest but doesn't give us the ability to invalidate specific JWTs.
+2. We could expire all tokens forcing everyone to login again. This would invalidate all tokens and fix the previous problem, but is inconvenient and not scalable. This is done by changing the secret, which we'll talk about in the next concept on secrets.
+3. Keep track of invalid tokens (a blacklist / denylist). This could potentially defeat the purpose of using JWTs because now we have to check against a list of tokens, and one of the main benefits of JWTs is that we don't have to do it. But there are a lot of resources out there to make this possible without adding much overhead.
 
 
 ## Secrets
-1. response (template or JSON-dictionary automatic)
-1. database, sqlite, postgres
-1. sqlalchemy, ORM, and models
-1. Authorization and authentication
-1. secrets / hiding connection strings
+
+For various things in development there are things that should be secret. Database connection strings, encryption keys, etc. The two main things we are going to work with are:
+
+1. A connection string to the database
+2. A signing key used for JWTs
+
+When you're starting out development, it's very common to hard code these in the application code. For experimentation, this is usually OK, but it's really recommended to store these outside of the source code, especially if you plan on open sourcing the project.
+
+If you check in code to a public GitHub repository that has database connection strings or secrets used for digital signatures, then the security of your application has been compromised.
+
+In order to store your code publicly in GitHub while also having functional code that uses things that should be secret, we can store those in a different location and read them from GitHub.
+
+Locally, we could literally just store them in a text file and read the text file. Or we can store them in a certain Python file, import the file into our project. When storing secrets in a separate file, make sure you add this file to the .gitignore so that we don't accidentally check it in to source control. It should stay out of the repository at all times. And if you accidentally commit it in to the repository but then remove it, it's already to late as the history of the repository is in tact. If this happens, you'll need to refresh all of your secrets and update the credentials to the database.
+
+In the case of JWTs, it's perfectly fine to change the signing key. In fact, it's probably recommended to change it every now and again. The only consequence is that all tokens will be invalidated, forcing everyone to login to get new tokens. This is actually how you force a re-login across the system for everybody, if you're concerned about unauthorized access.
+
+The ultimate solution for secrets is to use environment variables. Flask has examples on how to retrieve info [from files](https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-files) and also from [environment variables](https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables). We'll talk about this more when the time comes.
