@@ -60,7 +60,7 @@ def index():
     return "Hello!"
 ```
 
-To run the application, we set some environment variables (use set on windows):
+To run the application, we set some environment variables (use ```set``` instead of ```export``` on Windows):
 
 ```
 export FLASK_APP=application.py
@@ -68,7 +68,7 @@ export FLASK_ENV=development
 flask run
 ```
 
-This will give you an IP address and URL to visit ([http://127.0.0.1:5000/](http://127.0.0.1:5000/)). You'll need to make sure the server is running anytime you visit this web page.
+This will give you an IP address and URL to visit ([http://127.0.0.1:5000/](http://127.0.0.1:5000/)). This is the loopback address that refers to your local machine. You can also use ```localhost:5000```. You'll need to make sure the server is running anytime you visit this web page.
 
 You’ll need to do these exports every time you start your terminal window. So always make sure to:
 
