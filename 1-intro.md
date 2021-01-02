@@ -3,7 +3,7 @@
 ## What is Flask?
 Flask is a framework to build web applications in Python. This is to build the back end of a website, so you will use flask to do data processing and handle requests, work with databases, send responses, etc.
 
-To understand where Flask fits into the larger picture, you will still use front end technologies such as JavaScript, and you will still use database technologies like MySQL, MongoDB, or Postgres. And you will still need a web server, such as Nginx.
+To understand where Flask fits into the larger picture, you will still use front end technologies such as JavaScript, and you will still use database technologies like MySQL, MongoDB, or Postgres. And you will still need a web server, such as NGINX.
 
 Flask competes with other frameworks such as Django, and FastAPI.
 
@@ -28,7 +28,7 @@ I first started learning Django, but ended up switching to Flask because it is s
 
 Even the [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/quickstart/#quickstart) gives an example ```hello world``` application that is only 5 lines long:
 
-```
+```python3
 from flask import Flask
 app = Flask(__name__)
 
