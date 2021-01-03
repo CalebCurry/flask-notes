@@ -143,7 +143,7 @@ def show_testimonial(id):
             return render_template('testimonial.html', testimonial=testimonial)
 ```
 
-Don't forget to create a new template for an individual testimonial. We'll copy and paste ```index.html``` and change it up some. For example, we can put the indivual testimonial in the title.
+Don't forget to create a new template for an individual testimonial. We'll copy and paste ```index.html``` and change it up some. For example, we can put the individual testimonial in the title.
 
 ```html
 <!DOCTYPE html>
@@ -171,3 +171,35 @@ We can create links to each individual testimonial from the homepage at the end 
 ```
 <a href='/{{testimonial.id}}'><button>More info</button></a>
 ```
+
+## Potential Modifications
+
+It's important to understand that there are many different ways to design an application. The most important thing is to be consistent.
+
+For example, you may not want to take the ID as a query parameter in the URL, something like
+
+```
+http://localhost:5000/?id=35
+```
+
+In this situation, we would still visit the homepage but have the ability to pass in additional data. in the ```/``` route you would check for a submitted query parameter and build a condition on whether or not it exists and is valid. I personally prefer the way we have it.
+
+Here's an example on [how to retrieve query parameters](https://stackoverflow.com/questions/11774265/how-do-you-get-a-query-string-on-flask).
+
+Another variation would be to have everything in a designated subdirectory of the URL structure, such as:
+
+
+```http://localhost:5000/testimonials```
+
+and:
+
+```http://localhost:5000/testimonials/35```
+
+This is easy! Just change the ```@app.route()```s to the path you want!
+
+For example, let's change it to ```@app.route('/testimonials')``` and ```@app.route('/testimonials/<id>')```
+
+Visiting ```http://localhost:5000/testimonials``` and ```http://localhost:5000/testimonials/35``` work now, but the ```<a>``` URL's are broken! From ```/testimonials```, the ```<a>``` URL doesn't exist, and from ```/testimonials/<id>``` the ```<a>``` URL goes back to the homepage, which also no longer exists.
+
+Yikes! In the next lesson we'll talk about how to fix this in an elegant way and set up our template structure in a way that is more scalable.
+
