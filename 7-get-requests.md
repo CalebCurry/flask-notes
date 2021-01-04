@@ -5,13 +5,9 @@ GET is the default HTTP method when we request a webpage using our browser. Beca
 In fact, that's exactly what we did with our previous requests:
 
 ```python
-
-
 @app.route('/')
 def index():
     return "Hello!"
-
-
 ```
 
 This will accept GET requests at the root of our website.
@@ -26,7 +22,7 @@ Right now, we're returning a string. Obviously this is not a very useful thing t
 
 
 @app.route('/')
-def hello_world():
+def index():
     return '<h1>hello World</h1>'
 
 
@@ -38,11 +34,11 @@ Thus, we can bring the HTML code to a separate file and then just return that fi
 
 FYI, this is the approach you would follow to process and send data directly using Flask. It's important to understand how this works first before we start building out an API (which we're going to start doing in a few lessons).
 
-```
+```python3
 from flask import render_template
 
 @ app.route('/')
-def hello_world():
+def index():
 return render_template('index.html')
 ```
 
@@ -155,7 +151,7 @@ Don't forget to create a new template for an individual testimonial. We'll copy 
 <h1>Testimonial</h1>
 <p>This is what {{testimonial.name}} has to say:</p>
     <p>{{testimonial.message}}</p>
-<a href='/'><button>back</button></a>
+<a href='/'><button>view all</button></a>
 </body>
 </html>
 ```
