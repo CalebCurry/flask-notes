@@ -201,4 +201,3 @@ This CSS and JavaScript is a bit obnoxious, so we'll remove it for now.
 This concludes the basics of working with templates and building web pages without the use of an API. This should get you started, but there's still a lot more to know if we want create forms that modify data and so forth. In fact, we're still using dummy data. The next logical step would to replace this with an actual database.
 
 We'll be doing a lot of the other concepts when we build out an API. If you want to build out the templates as we go, feel free. But overall, I think the API approach is best and just knowing the basics of templates is adequate.
-
