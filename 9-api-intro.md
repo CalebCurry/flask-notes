@@ -64,7 +64,7 @@ This is in contrast to POST, which is not conventionally idempotent. This is oft
 
 This is why when you're filling out some web page and you hit submit twice, you get a browser warning saying that you're about to submit the form a second time which can cause issues.
 
-## routes and returns
+## Routes and Returns
 
 I tend to follow these conventions for the routes:
 
