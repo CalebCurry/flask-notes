@@ -84,7 +84,7 @@ I was largely inspired to structure my routes this way based on the Stack Exchan
 
 For example, ```https://stackoverflow.com/questions/42045479/mysql-date-before-year-1000-allowed```
 
-This is essentially a GET request to resource/<id> (where the resource is questions and the id is 42045479).
+This is essentially a GET request to ```resource/<id>``` (where the resource is questions and the id is 42045479).
 
 As for return data, I don't think there are any standards, but some common conventions. To explain what I mean, let's say you update a resource. You could:
 1. return the count of rows updates (it should be 1)
