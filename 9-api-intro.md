@@ -54,7 +54,7 @@ There is not 100% agreement on how an API should be set up. A common argument is
 
 Plus, there is not universal agreement on what you should return from these API calls either.
 
-There is one thing everybody agrees on, though. And that is that PUT requests need to be **idempotent**. This means means that invoking a PUT API request 1 time or 100 times does the same thing.
+There is one thing everybody agrees on, though. And that is that PUT requests need to be **idempotent**. This means that invoking a PUT API request 1 time or 100 times does the same thing.
 
 This is why PUT is ideal for replacing a resource with a new updated version.
 
