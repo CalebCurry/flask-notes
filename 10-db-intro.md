@@ -102,11 +102,11 @@ Just watch the pricing! There is a free tier for 12 months if you're just signin
 
 ## Local Development
 
-In addition to deploying a database to AWS, we will have a local database instance. The data between these will not be shared but the structure will be synced thanks to the migrations we create. So if we setup a structure in our local code, when the code is deployed the remote database structure will be updated automatically.
+In addition to deploying a database to AWS, we will have a development database instance. The data between these will not be shared but the structure will be synced thanks to the migrations we create. So if we setup a structure in our local code, when the code is deployed the remote database structure will be updated automatically.
 
 You could just use the connection string for the remote database in AWS, but I think it's best to keep the deployment database and development database separate.
 
-Another option is you could have a development database in AWS deployed, then you do not have to install anything locally.
+You can install PostgreSQL locally for development. Another option is you could have a development database in AWS deployed, then you do not have to install anything locally.
 
 Enough chat though, let's just get started and try to get this all working!
 
