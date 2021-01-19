@@ -81,7 +81,9 @@ Not only can we define the database structure, but changes in these structures c
 
 When we check our code in to source control, the entire database structure is defined in Python code, meaning there is no need to transfer handwritten SQL scripts or database files around with the project.
 
-We will see how this works soon.
+Database migrations are ideal if you will be regularly changing the database structure or regularly moving your development environment. Originally I wanted to use database migrations, but later realized things may be much simpler by just using create_all() to [define the initial database structure](https://stackoverflow.com/questions/34807235/why-sqlalchemy-create-all-can-be-reused). The immediate downside to this is that database structure changes are not quite as easy to work with, but our overall code is simpler because we don't have to deal with migrations.
+
+I recommend just starting out without them, and then you can learn about migrations in more detail if you think it's something you need.
 
 ## Database Hosting
 
