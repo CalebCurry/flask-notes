@@ -47,3 +47,5 @@ def delete_testimonial(id):
 
     return {}
 ```
+
+You will then want to commit these changes and try it on the production server.
