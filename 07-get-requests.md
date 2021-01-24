@@ -4,7 +4,7 @@ GET is the default HTTP method when we request a webpage using our browser. Beca
 
 In fact, that's exactly what we did with our previous requests:
 
-```python
+```python3
 @app.route('/')
 def index():
     return "Hello!"
@@ -18,14 +18,10 @@ If you want, you can manually specify that this is for GET requests by passing i
 
 Right now, we're returning a string. Obviously this is not a very useful thing to give the client if we're trying to build the next big thing. Instead, we should send HTML. We can type out the HTML directly here, like so:
 
-```python
-
-
+```python3
 @app.route('/')
 def index():
     return '<h1>hello World</h1>'
-
-
 ```
 
 This sort of works but doesn't give us a lot of freedom to build out web pages without polluting our routes file.

@@ -15,7 +15,8 @@ Because replacing a resource numerous times will give us the same result, this p
 When we update a resource, we just change the attributes on the object. We can get the new values from the request body.
 
 There is no universally agreed on thing that should be returned. Here we will just return the updated object.
-```
+
+```python3
 @app.route('/api/testimonials/<id>', methods=['POST', 'PUT'])
 def update_testimonial(id):
     testimonial = Testimonial.query.get(id)
@@ -34,7 +35,7 @@ def update_testimonial(id):
 
 Not much to say, here!
 
-```
+```python3
 @app.route('/api/testimonials/<id>', methods=['DELETE'])
 def delete_testimonial(id):
     testimonial = Testimonial.query.get(id)

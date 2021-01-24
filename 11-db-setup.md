@@ -78,14 +78,15 @@ Create a new server in pgAdmin and put all of your connection details. Confirm t
 
 In ```__init__.py```, **near the end right before importing the routes/views file**, add your connection string in this fashion
 (exact connection string will depend on your db settings in AWS):
-```python
+
+```python3
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://flaskpractice:SXR4Vt3MbFvMqhfDP3IA@flask-practice.cyr69gg58bpb.us-east-2.rds.amazonaws.com/postgres'
 db = SQLAlchemy(app)
 ```
 
 The general format should be:
 
-```python
+```python3
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://username:password@endpoint/databasename'
 db = SQLAlchemy(app)
 ```
@@ -124,7 +125,7 @@ export RDS_HOSTNAME=flask-practice.cyr69gg58bpb.us-east-2.rds.amazonaws.com
 ```
 
 For the following code, you will want to ```import os```:
-```python
+```python3
 DB_NAME = os.environ.get('RDS_DB_NAME')
 DB_USER = os.environ.get('RDS_USERNAME')
 DB_PASSWORD = os.environ.get('RDS_PASSWORD')

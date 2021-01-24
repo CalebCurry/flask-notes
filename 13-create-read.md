@@ -10,7 +10,7 @@ First, visit ```http://localhost:5000/api/testimonials``` to get the ID of the t
 
 Now, visit ```http://localhost:5000/api/testimonials/1```. Right now the page is not working, obviously. Let's create that endpoint.
 
-```
+```python3
 @app.route('/api/testimonials/<id>')
 def get_testimonial(id):
     return jsonify(Testimonial.query.get(id))
@@ -28,7 +28,7 @@ This will give us this response:
 
 Now, an invalid ID will result in ```null```. This can work, but instead I'll return an empty dictionary.
 
-```
+```python3
 @app.route('/api/testimonials/<id>')
 def get_testimonial(id):
     testimonial = Testimonial.query.get(id)
@@ -46,6 +46,7 @@ With templates I returned a 404 page when the resource wasn't found. For an API 
 For create, we will use a ```POST``` request and I recommend the use of [Postman](https://www.postman.com/).
 
 We can start our route like this:
+
 ```python3
 from flask import request
 
@@ -62,7 +63,7 @@ This means that all of the data in the body is accessible through a dictionary r
 
 Let's finish our endpoint:
 
-```
+```python3
 @app.route('/api/testimonials', methods=['POST'])
 def add_testimonial():
     data = request.get_json()

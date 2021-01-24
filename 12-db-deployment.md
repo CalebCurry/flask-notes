@@ -13,7 +13,7 @@ We are going to create our first database table and we do this through defining 
 
 We will work with a Testimonial class, we can import that into our ```routes.py``` file now:
 
-```
+```python3
 from testimonials import db
 from testimonials.models import Testimonial
 ```
@@ -30,7 +30,8 @@ class Testimonial(db.Model):
 ```
 
 In interactive mode, we can initialize our database:
-```
+
+```python3
 from testimonials import db
 db.create_all()
 db.metadata.tables.keys()
@@ -49,7 +50,7 @@ We will add ```db.create_all()``` to our ```__init__.py``` file right after ```d
 
 For this we will also want to import the models we want created right before our invocation to ```db.create_all()```:
 
-```
+```python3
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -63,7 +64,7 @@ I agree that all of the different imports and getting things connected is a huge
 
 Confirm you have the correct imports ```from testimonials import db``` and ```from testimonials.models import Testimonial```, and write a basic GET request:
 
-```
+```python3
 @app.route('/api/testimonials')
 def get_testimonials():
     testimonials = Testimonial.query.all()

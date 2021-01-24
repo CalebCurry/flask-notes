@@ -44,13 +44,13 @@ The new job of ```application.py``` is to now import the package, and we will mo
 
 When we set our environment variable, we said ```export FLASK_APP=application.py```, so it looks for this file and specifically looks for a flask app. Thus, we will import our app variable from our new package into this module.
 
-```python
+```python3
 from testimonials import app
 ```
 
 Now, if you're just developing locally, this should be fine, but I know that I'm deploying to AWS and AWS looks for a flask instance called application, not app, so we can ```import as``` to give it the name ```application```:
 
-```python
+```python3
 from testimonials import app as application
 ```
 

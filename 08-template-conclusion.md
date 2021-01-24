@@ -53,7 +53,7 @@ At this point the home page should work and we just need to update the URLs to b
 
 The new ```/testimonials/<id>``` will look like this:
 
-```
+```python3
 @app.route('/testimonials/<id>')
 def show_testimonial(id):
 

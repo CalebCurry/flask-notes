@@ -60,7 +60,7 @@ Where the values for Employee ID refer to a row in an ```Employees``` table.
 
 When working with an ORM, you'll be able to easily access related tables with a nested object. In this scenario if you wanted to grab employee info for a particular phone extension, it would look something like this:
 
-```
+```python3
 ext = Extension.query.get(17)
 name = ext.employee.name
 ```
