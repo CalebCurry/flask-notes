@@ -19,7 +19,7 @@ from testimonials.models import Testimonial
 ```
 
 ```python3
-from __main__ import db
+from testimonials import db
 class Testimonial(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
