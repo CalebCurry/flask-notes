@@ -53,7 +53,7 @@ For this we will also want to import the models we want created right before our
 app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOSTNAME}/{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-from drink_ratings.models import Testimonial
+from testimonials.models import Testimonial
 db.create_all()
 ```
 
