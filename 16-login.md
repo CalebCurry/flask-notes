@@ -7,7 +7,8 @@ pip freeze > requirements.txt
 ```
 
 Inside of ```__init__.py```:
-```
+
+```python3
 from flask_jwt_extended import JWTManager
 from flask_bcrypt import Bcrypt
 
@@ -36,7 +37,8 @@ We can change this and set this as an environment variable, which we will do lat
 It's recommended to set the password size to 60, which is the length of the hash from bcrypt.
 
 Because we have ```db.create_all()``` in our ```__init__.py``` file, it will create this table for us automatically.
-```
+
+```python3
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
@@ -46,17 +48,37 @@ class User(db.Model):
 Notice that there is nothing about hashing here. It's all done in application code.
 
 ## Creating Users and Logging In
+
 Now, let's take a look at ```routes.py```:
-```
+
+```python3
 from drink_ratings import bcrypt, jwt
+from testimonials.models import User
 from flask_jwt_extended import jwt_required, create_access_token
 
 ```
 
-##Basic login concepts
+Here is how we create users:
 
-We can see how this works by first ignoring the password. Assume only a username is needed.
+```python3
+@app.route('/api/create_user', methods=['POST'])
+def create_user():
+    data = request.get_json()
+    username = data.get('username')
+    password = bcrypt.generate_password_hash(
+        data.get('password')).decode('utf-8')
+
+    user = User(username=username, password=password)
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify(user.id)
+
 ```
+
+We can see how logging in works by first ignoring the password. Assume only a username is needed.
+
+```python3
 @app.route('/api/login', methods=['POST'])
 def login():
     username = request.get_json().get('username')
@@ -68,7 +90,7 @@ def login():
 
 Now, we just need to add some additional functionality to get the password, compare it to the database, and issue a JWT.
 
-```
+```python3
 @app.route('/api/login', methods=['POST'])
 def login():
     username = request.get_json().get('username')
@@ -106,19 +128,20 @@ When building out a client application, you can write code to do this automatica
 
 Now, add the decorator to our desired routes:
 
-```
+```python3
 @app.route('/api/testimonials/<id>', methods=['DELETE'])
 @jwt_required
 
 ...
 
-
 @app.route('/api/testimonials/<id>', methods=['POST', 'PUT'])
 @jwt_required
 ```
+
 Now, hitting these routes work the same way as expected.
 
 If you remove the authorization in Postman, you get:
+
 ```
 {
     "msg": "Missing Authorization Header"
@@ -137,7 +160,7 @@ When this happens, you'll need to log back in to get a new token.
 
 This is a huge pain. It seems like you're only logged in for .5 seconds. We can fix this by configuring the JWT settings on the server. Here is a page to see [all the settings](https://flask-jwt-extended.readthedocs.io/en/stable/options/#configuration-options). This is in the ```__init__.py``` file and can take an integer for the number of seconds till expiration.
 
-```
+```python3
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 604800
 jwt = JWTManager(app)
 ```
@@ -152,9 +175,6 @@ We're going to move it to an environment variable just like we did with the data
 
 Before we set an environment variable, I want to get a valid token and confirm that it is working. When we change the secret key, all tokens will be invalidated. This is the surest way to log everyone out. Change the secret key.
 
-```
-
-```
 **NOTE** when you export a new environment variable, you'll need to launch the flask app in a new terminal window for it to catch this change.
 
 ```
