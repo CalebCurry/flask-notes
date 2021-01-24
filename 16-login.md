@@ -93,25 +93,21 @@ Now, we just need to add some additional functionality to get the password, comp
 ```python3
 @app.route('/api/login', methods=['POST'])
 def login():
-    username = request.get_json().get('username')
-    candidate = request.get_json().get('password')
-
-    if not username or not candidate:
-        return {'error': 'username and password data required'}
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
     user = User.query.filter_by(username=username).first()
 
     if not user:
-        return {'error': 'invalid username or password'}, 400
-    # return jsonify(bcrypt.check_password_hash(user.password, candidate)) #helpful to see
+        return {'error': 'username or password incorrect'}, 400
 
-    if bcrypt.check_password_hash(user.password, candidate):
-        access_token = create_access_token(
-            identity={'username': username, 'role': 'admin'})
-        return {'access_token': access_token}, 200
+    if bcrypt.check_password_hash(user.password, password):
+        access_token = create_access_token(identity={'username': username})
+        return {'access_token': access_token}
 
     else:
-        return {'error': 'invalid Username or password'}, 400
+        return {'error': 'username or password incorrect'}, 400
 ```
 
 This will give back a JWT like so:
